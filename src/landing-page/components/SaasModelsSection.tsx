@@ -10,6 +10,7 @@ const SAAS_MODELS = [
     icon: Film,
     accentColor: "from-rose-500 to-amber-500",
     badgeColor: "bg-rose-500/10 text-rose-500 border-rose-500/20",
+    glowBorder: "hover:border-rose-500/50 hover:shadow-rose-500/10",
     features: [
       "♾ Unlimited Movies and TV Series database integration",
       "Automated subscription tiers (Monthly / Annual pass)",
@@ -29,9 +30,10 @@ const SAAS_MODELS = [
     icon: Bot,
     accentColor: "from-purple-500 to-indigo-500",
     badgeColor: "bg-purple-500/10 text-purple-500 border-purple-500/20",
+    glowBorder: "hover:border-purple-500/50 hover:shadow-purple-500/10",
     features: [
       "AI Copywriting for blogs, social posts, emails & ads",
-      "Token-based or credit credit packages with Stripe checkout",
+      "Token-based or credit packages with Stripe checkout",
       "OpenAI GPT-4o, Claude 3.5 & Gemini AI models supported",
       "Prompt templates library for marketing, SEO & coding",
       "Clean user dashboard with copy export & history",
@@ -48,6 +50,7 @@ const SAAS_MODELS = [
     icon: Cloud,
     accentColor: "from-sky-500 to-blue-600",
     badgeColor: "bg-sky-500/10 text-sky-500 border-sky-500/20",
+    glowBorder: "hover:border-sky-500/50 hover:shadow-sky-500/10",
     features: [
       "Share files by password-protected or expiring links 🔗",
       "🚀 Unlimited Storage & 🎆 Unlimited Backup architectures",
@@ -67,6 +70,7 @@ const SAAS_MODELS = [
     icon: ShoppingCart,
     accentColor: "from-emerald-500 to-teal-600",
     badgeColor: "bg-emerald-500/10 text-emerald-500 border-emerald-500/20",
+    glowBorder: "hover:border-emerald-500/50 hover:shadow-emerald-500/10",
     features: [
       "Instant automated store setup with 1-click checkout",
       "🚚 Dropshipping supplier sync with auto order fulfillment",
@@ -82,12 +86,12 @@ const SAAS_MODELS = [
 
 export function SaasModelsSection() {
   return (
-    <section id="saas-models" className="py-16 sm:py-24 bg-muted/20 border-y border-border/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="saas-models" className="py-16 sm:py-24 bg-muted/20 border-y border-border/50 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-xs sm:text-sm font-bold uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-xs sm:text-sm font-bold uppercase tracking-wider mb-3 shadow-sm">
             <Sparkles className="w-3.5 h-3.5" />
             Proven Business Models
           </div>
@@ -107,20 +111,20 @@ export function SaasModelsSection() {
               <div
                 key={model.id}
                 id={model.id}
-                className="scroll-mt-24 group relative rounded-3xl bg-card border border-border/80 hover:border-primary/50 shadow-md hover:shadow-2xl transition-all duration-300 p-6 sm:p-8 flex flex-col justify-between overflow-hidden"
+                className={`scroll-mt-24 group relative rounded-3xl bg-card border border-border/80 shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 p-6 sm:p-8 flex flex-col justify-between overflow-hidden ${model.glowBorder}`}
               >
-                {/* Top Subtle Gradient Light */}
+                {/* 21st.dev Animated Ambient Background Glow */}
                 <div
-                  className={`absolute top-0 right-0 -mt-12 -mr-12 w-48 h-48 bg-gradient-to-br ${model.accentColor} rounded-full blur-3xl opacity-15 group-hover:opacity-25 transition-opacity pointer-events-none`}
+                  className={`absolute top-0 right-0 -mt-10 -mr-10 w-56 h-56 bg-gradient-to-br ${model.accentColor} rounded-full blur-3xl opacity-15 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none`}
                 />
 
-                <div>
+                <div className="relative z-10">
                   {/* Top Badges */}
-                  <div className="flex items-center justify-between gap-2 mb-4">
+                  <div className="flex items-center justify-between gap-2 mb-5">
                     <span className={`px-3 py-1 rounded-full text-xs font-bold border ${model.badgeColor}`}>
                       {model.badge}
                     </span>
-                    <div className="flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">
+                    <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20 shadow-xs">
                       <DollarSign className="w-3.5 h-3.5" />
                       {model.monetization}
                     </div>
@@ -128,7 +132,7 @@ export function SaasModelsSection() {
 
                   {/* Title & Subtitle */}
                   <div className="flex items-start gap-4 mb-4">
-                    <div className={`p-3.5 rounded-2xl bg-gradient-to-br ${model.accentColor} text-white shadow-lg shrink-0`}>
+                    <div className={`p-4 rounded-2xl bg-gradient-to-br ${model.accentColor} text-white shadow-lg shrink-0 group-hover:scale-110 transition-transform duration-300`}>
                       <Icon className="w-6 h-6" />
                     </div>
                     <div>
@@ -141,10 +145,10 @@ export function SaasModelsSection() {
                     </div>
                   </div>
 
-                  {/* Features List */}
+                  {/* Features List with Micro-animations */}
                   <ul className="mt-6 space-y-3">
                     {model.features.map((feature, fIdx) => (
-                      <li key={fIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-muted-foreground">
+                      <li key={fIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-muted-foreground group-hover:text-foreground/90 transition-colors">
                         <div className="mt-0.5 p-0.5 rounded-full bg-primary/10 text-primary shrink-0">
                           <Check className="w-3.5 h-3.5" />
                         </div>
@@ -167,7 +171,7 @@ export function SaasModelsSection() {
                 </div>
 
                 {/* Footer Action */}
-                <div className="mt-8 pt-5 border-t border-border/60 flex items-center justify-between gap-4">
+                <div className="relative z-10 mt-8 pt-5 border-t border-border/60 flex items-center justify-between gap-4">
                   <span className="text-xs font-bold text-foreground">
                     Includes Setup & Lifetime Support
                   </span>
@@ -175,7 +179,7 @@ export function SaasModelsSection() {
                     href={model.demoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-xs sm:text-sm shadow transition-all hover:scale-105"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-xs sm:text-sm shadow-md transition-all hover:scale-105 active:scale-95"
                   >
                     Explore Model <ArrowUpRight className="w-4 h-4" />
                   </a>
